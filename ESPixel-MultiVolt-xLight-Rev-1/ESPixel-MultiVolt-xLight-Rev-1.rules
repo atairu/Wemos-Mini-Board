@@ -1,0 +1,79 @@
+
+(rules PCB ESPixel-MultiVolt-xLight-Rev-1
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 360)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 350.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 350.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    RPP GND "Net-(U1-SW)" "Net-(U1-BST)" VOUT VIN 3V3 "Port-1"
+    "unconnected-(U4-3Y-Pad8)" "unconnected-(U4-3A-Pad9)" "unconnected-(U4-3~OE-Pad10)" "unconnected-(U4-4Y-Pad11)" "unconnected-(U4-4A-Pad12)" "unconnected-(U4-4~OE-Pad13)" "Output-1" "unconnected-(U2-~{RST}-Pad1)"
+    "unconnected-(U4-2A-Pad5)" "unconnected-(U2-A0-Pad2)" "unconnected-(U2-D0-Pad3)" "unconnected-(U2-SCK{slash}D5-Pad4)" "unconnected-(U2-MISO{slash}D6-Pad5)" "unconnected-(U2-MOSI{slash}D7-Pad6)" "unconnected-(U2-CS{slash}D8-Pad7)" "unconnected-(U2-D3-Pad12)"
+    "unconnected-(U2-SDA{slash}D2-Pad13)" "unconnected-(U2-SCL{slash}D1-Pad14)" "unconnected-(U2-RX-Pad15)" "unconnected-(U2-TX-Pad16)" "unconnected-(U4-2~OE-Pad4)" "unconnected-(U4-2Y-Pad6)" "Net-(JST1-Pin_5)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 350.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
